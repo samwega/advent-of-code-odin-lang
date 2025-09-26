@@ -15,6 +15,11 @@ my_context: md5.Context
 
 main :: proc() {
 	start_time := time.now()
+	defer {					 // this goes at the end of the main proc, defer keeps it tidier. 
+		end_time := time.now()
+		elapsed := time.diff(start_time, end_time)
+		fmt.println("Time taken:", elapsed)
+	}
 	
 	for {
 		md5.init(&my_context)		// Initialize context
@@ -36,11 +41,8 @@ main :: proc() {
 		if !strings.has_prefix(string(hex_string), "000000") {	// works for arbitrary number of 0s, up to 7.
 			decimal_suffix += 1
 		} else {
-			end_time := time.now()
-			elapsed := time.diff(start_time, end_time)
 
 			fmt.println("I got it: ", string_suffix)
-			fmt.println("Time taken:", elapsed)
 			fmt.println("Total iterations:", decimal_suffix)
 
 			break
