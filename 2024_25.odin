@@ -67,9 +67,9 @@ separate_keys_locks :: proc() {
 turn_numeric :: proc (line: [5]string) -> (numeric: [5]int) {
 
     // For each column position (0, 1, 2, 3, 4)
-    for col := 0; col < 5; col += 1 {
+    for col in 0..<5 {
         // For each row (0, 1, 2, 3, 4)
-        for row := 0; row < 5; row += 1 {
+        for row in 0..<5 {
             if line[row][col] == '#' {		// double indexing, interesting, looks like a matrix
                 numeric[col] += 1
             }

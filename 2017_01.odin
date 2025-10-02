@@ -1,7 +1,6 @@
 package aoc
 
 import "core:fmt"
-// import "core:strconv"
 
 sum1, sum2 := 0, 0
 wrap_around := INPUT + INPUT
