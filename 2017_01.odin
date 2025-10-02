@@ -1,6 +1,7 @@
 package aoc
 
 import "core:fmt"
+import "core:strconv"
 
 sum1, sum2 := 0, 0
 wrap_around := INPUT + INPUT
@@ -10,18 +11,19 @@ jump := len(INPUT)/2
 main :: proc() {
 
 //PART 1:
-	for i := 0; i < len(INPUT); i += 1 {
+	for i in 0..< len(INPUT) {
 		if wrap_around[i] == wrap_around[i + 1] {
-			sum1 += int(wrap_around[i])-'0'
-			// sum1 += strconv._digit_value(rune(wrap_around[i]))	// the other way to do it, with an internal function.. hmm..
+			val, _ := strconv.digit_to_int(rune(wrap_around[i]))
+			sum1 += val
 		}
 	}
 	fmt.println(sum1)
 
 // PART 2:
-	for i := 0; i < len(INPUT); i += 1 {
+	for i in 0..< len(INPUT) {
 		if wrap_around[i] == wrap_around[i+jump] {
-			sum2 += int(wrap_around[i])-'0'
+			val, _ := strconv.digit_to_int(rune(wrap_around[i]))
+			sum2 += val
 		}
 	}
 	fmt.println(sum2)
